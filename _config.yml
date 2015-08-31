@@ -1,0 +1,13 @@
+# Site settings
+title: David Chiles
+email: david@davidchiles.org
+description: > # My thoughts on maps, iOS development and a bit of camping.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://davidchiles.org" # the base hostname & protocol for your site
+twitter_username: dchiles
+github_username:  davidchiles
+instagram_username: chilichiles
+
+# Build settings
+markdown: redcarpet
+highlighter: pygments
