@@ -2,7 +2,7 @@
 layout: post
 title:  "Making the iBurn Map: Streets"
 date:   2015-08-29 16:13:28
-categories: iburn map js
+tags: iburn map js
 ---
 
 I worked with [Andrew Johnstone](http://architecturalartsguild.com/about/), [Savannah Henderson](http://www.savannahhenderson.com), [David Brodsky](https://github.com/onlyinamerica) and [Chris Ballinger](http://chrisballinger.info) making the [iBurn](http://www.iburnapp.com/) app for [Android](https://github.com/Burning-Man-Earth/iBurn-Android) and [iOS](https://github.com/Burning-Man-Earth/iBurn-iOS). One of my favorite features in iBurn is the map when you first launch the app. This year I took on rewriting and rethinking how we create the geo data. I'm going to try and document how I made the different components of the map.
@@ -109,4 +109,4 @@ Finally I cut the other arc and time roads with Rod's road and combine them into
 node layout.js -f ../../data/2015/geo/layout.json -t streets
 ```
 #### Result
-<iframe frameborder="0" width="100%" height="300" src="http://bl.ocks.org/d/e7b083672cff346b2f37"></iframe>
+![Black Rock City All Streets]({{ site.url }}/assets/bm_all_streets.png)
