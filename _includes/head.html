@@ -16,4 +16,15 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/favicon/favicon-114.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/favicon/favicon-72.png">
     <link rel="apple-touch-icon-precomposed" href="/assets/favicon/favicon-57.png">
+
+    {% if page.map == "leaflet" %}
+    <script src="/js/leaflet/leaflet.js"></script>
+    <link rel="stylesheet" href="/js/leaflet/leaflet.css" /> 
+    {% endif %}
+
+    {% if page.map-height > 0 %}
+    <style type="text/css">
+      #map { height: {{page.map-height}}px; }
+    </style>
+    {% endif %}
 </head>
