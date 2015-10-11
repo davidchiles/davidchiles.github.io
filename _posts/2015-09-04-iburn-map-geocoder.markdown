@@ -44,7 +44,7 @@ To get the geocoder ready for use on the device I used browserify to package up 
 ```bash
 browserify index.js > bundle.js
 ```
-We also did some [uglifyify](https://github.com/hughsk/uglifyify) to get it a bit smaller.
+We also did some [uglifyify](https://github.com/hughsk/uglifyify) to get it a bit smaller. You can find all the code on [Github](https://github.com/Burning-Man-Earth/iBurn-Data/tree/master/scripts/2015/geocoder).
 
 
 #### iOS
