@@ -1,0 +1,82 @@
+---
+layout: post
+title:  "What's new for the iBurn map in 2016"
+date:   2016-08-19 10:15:00
+tags:   iburn map js
+map:    leaflet
+map-height: 400
+---
+
+Burning Man is coming up soon and [iBurn](https://iburnapp.com) is ready for 2016. 
+
+Probably the biggest difference this year is the city didn't move. It's in exactly the same place it was last year.
+
+### The Map
+
+<div id="map"></div>
+<script >
+  var southWest = L.latLng(40.7413,-119.267),
+    northEast = L.latLng(40.8365, -119.1465),
+    bounds = L.latLngBounds(southWest, northEast);
+  var map = L.map('map').setView([40.7864, -119.2065], 13).setMaxBounds(bounds);
+
+  L.tileLayer('https://media.githubusercontent.com/media/davidchiles/tiles/master/iburn-2016-tiles/{z}/{x}/{y}.png', {
+        minZoom: 12,
+  			maxZoom: 19
+  		}).addTo(map);
+
+
+
+</script>
+
+### Generating Streets Like a Grid
+
+Last year I realized I had a pretty big problem with geocoding some intersections. Whenever a time street (2:00, 10:00, ...) ended it never perfectly matched up with the lettered street (A, B, ...) because they didn't share a node. They were always off by an extremely small amount and they never came back as intersecting. So I realized I needed to create common points between all roads that intersected (this ended up helping the OpenStreetMap import as well).
+
+So what I ended up doing was treating the streets like a grid. So instead of creating a bunch of lines and outputting the GeoJSON. We create a bunch of points in the grid with axis being bearing and distance. After creating points for every road we can go back and collect the points to create the GeoJSON lines. This ensures that instead of 2:00 just having a start and end point it contains all the points where a street intersects or meets it.
+
+### Toilets
+
+For this year I wanted to make the toilets more legible. So I needed to make toilets polygons instead of just points. In the past we never generated our own toilet locations but got them from [other people](http://www.wkeller.net/BRC-GPS/) who were kind enough to share.
+
+Following the [design from last year]({% post_url 2015-08-29-iburn-map-streets %}) I decided to make a layout file just for toilets.
+
+```js
+{
+  "size":[50,200], //The size of the toilet rectangle in feet.
+  "location": [
+    {
+      "bearing":50,        // The bearing from the man in degrees, time, or array of times.
+      "offset":24,   	   // The offset from bearing in feet. to move it off of intersection or road.
+      "distance":3000,     // The distance from the man in feet, single street, or range of streets.
+      "orientation":"city" // The orientation of the rectangle options are city, center or perp.
+    },
+    {
+      "bearing":"3:00",
+      "offset":-160,
+      "distance":1200,
+      "orientation":"city"
+    },
+    {
+      "bearing":["6:30","7:00","8:00","8:30","9:00","9:30"],
+      "offset":45,
+      "distance":["h","i"],
+      "orientation":"center"
+    },
+    ...
+    ]
+}
+```
+
+This gets fed into the [toilet parser](https://github.com/Burning-Man-Earth/BlackRockCityPlanner/blob/master/src/toilet.js) along with the overall city layout. The result is both points and polygons of [all the toilets at Burning Man](https://github.com/Burning-Man-Earth/iBurn-Data/blob/master/data/2016/geo/toilets.geojson).
+
+### Plans for 2017
+
+There are few things I think would make next year even easier.
+
+- Generate our points file. This includes first-aid, ranger, bus stops, ice locations.
+- Automatic generation of GeoJSON files every time the scripts or layout files change.
+- Expand the features we map like walk-in camping and other infrastructure.
+- [Vector tiles!](https://github.com/mapbox/vector-tiles/issues/23)
+
+Let me know if you see any errors with the map.
