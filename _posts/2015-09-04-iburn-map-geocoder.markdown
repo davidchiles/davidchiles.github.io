@@ -51,7 +51,7 @@ We also did some [uglifyify](https://github.com/hughsk/uglifyify) to get it a bi
 
 We created a small [wrapper class](https://github.com/Burning-Man-Earth/iBurn-iOS/blob/master/iBurn/BRCGeocoder.h) around [JavaScriptCore](https://developer.apple.com/library/mac/documentation/Carbon/Reference/WebKit_JavaScriptCore_Ref/). Apple makes it really easy to pass between Objective-C and JS. Loading the JS:
 
-```obj-c
+```objc
 NSString *path = [[NSBundle mainBundle] pathForResource:@"bundle" ofType:@"js"];
 
 NSString *string = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
@@ -65,7 +65,7 @@ strongSelf.context = [[JSContext alloc] init];
 
 Then to execute a query:
 
-```obj-c
+```objc
 - (NSString*) executeReverseLookup:(CLLocationCoordinate2D)location {
     NSString *command = [NSString stringWithFormat:@"reverseGeocode(reverseGeocoder, %f, %f)", location.latitude, location.longitude];
     JSValue *result = [self.context evaluateScript:command];
