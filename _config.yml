@@ -9,5 +9,11 @@ github_username:  davidchiles
 instagram_username: chilichiles
 
 # Build settings
-markdown: redcarpet
-highlighter: pygments
+highlighter: rouge
+
+markdown: kramdown
+
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
