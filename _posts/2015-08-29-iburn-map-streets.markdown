@@ -108,5 +108,6 @@ Finally I cut the other arc and time roads with Rod's road and combine them into
 ```bash
 node layout.js -f ../../data/2015/geo/layout.json -t streets
 ```
+
 #### Result
 ![Black Rock City All Streets]({{ site.url }}/assets/bm_all_streets.png)
