@@ -4,7 +4,17 @@ title:  "Making the iBurn Map: Results"
 date:   2015-10-10 17:56:00
 tags:   iburn map js
 map:    leaflet
-map-height: 400
+maps:
+  map:
+    layer_url: https://raw.githubusercontent.com/davidchiles/tiles/master/iburn-2015-tiles/{z}/{x}/{y}.png
+    min_zoom: 12
+    max_zoom: 19
+    bounds:
+      sw: 40.7413,-119.267
+      ne: 40.8365, -119.1465
+    view:
+      center: 40.7864, -119.2065
+      zoom: 15
 ---
 
 This is the final post in a series on making the data for iBurn 2015. So far we've created the [streets]({% post_url 2015-08-29-iburn-map-streets %}) and [polygons]({% post_url 2015-09-18-iburn-map-polygons %}). The last few pieces are making the 'outline' of the entire city and a few points of interest.
@@ -51,17 +61,3 @@ My plan for next year is to really improve the POI for the next year. Fingers cr
 We used the same process as other years and created a bunch of png tiles and packaged them up into an mbtiles file using [Tilemill](https://www.mapbox.com/tilemill/). Next year we hope to use vector tiles as long as [MapboxGL](https://github.com/mapbox/mapbox-gl-native/) has [mbtiles support](https://github.com/mapbox/mapbox-gl-native/issues/584).
 
 <div id="map"></div>
-<script >
-  var southWest = L.latLng(40.7413,-119.267),
-    northEast = L.latLng(40.8365, -119.1465),
-    bounds = L.latLngBounds(southWest, northEast);
-  var map = L.map('map').setView([40.7864, -119.2065], 13).setMaxBounds(bounds);
-
-  L.tileLayer('https://raw.githubusercontent.com/davidchiles/tiles/master/iburn-2015-tiles/{z}/{x}/{y}.png', {
-        minZoom: 12,
-  			maxZoom: 19
-  		}).addTo(map);
-
-
-
-</script>

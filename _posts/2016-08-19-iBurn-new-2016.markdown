@@ -4,7 +4,17 @@ title:  "What's new for the iBurn map in 2016"
 date:   2016-08-19 10:15:00
 tags:   iburn map js
 map:    leaflet
-map-height: 400
+maps:
+  map:
+    layer_url: https://media.githubusercontent.com/media/davidchiles/tiles/master/iburn-2016-tiles/{z}/{x}/{y}.png
+    min_zoom: 12
+    max_zoom: 19
+    bounds:
+      sw: 40.7413,-119.267
+      ne: 40.8365, -119.1465
+    view:
+      center: 40.7864, -119.2065
+      zoom: 15
 ---
 
 Burning Man is coming up soon and [iBurn](https://iburnapp.com) is ready for 2016. 
@@ -14,20 +24,6 @@ Probably the biggest difference this year is the city didn't move. It's in exact
 ### The Map
 
 <div id="map"></div>
-<script >
-  var southWest = L.latLng(40.7413,-119.267),
-    northEast = L.latLng(40.8365, -119.1465),
-    bounds = L.latLngBounds(southWest, northEast);
-  var map = L.map('map').setView([40.7864, -119.2065], 13).setMaxBounds(bounds);
-
-  L.tileLayer('https://media.githubusercontent.com/media/davidchiles/tiles/master/iburn-2016-tiles/{z}/{x}/{y}.png', {
-        minZoom: 12,
-  			maxZoom: 19
-  		}).addTo(map);
-
-
-
-</script>
 
 ### Generating Streets Like a Grid
 

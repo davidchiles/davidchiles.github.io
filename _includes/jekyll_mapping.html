@@ -1,0 +1,19 @@
+{% for map in page.maps %}
+
+<script >
+  var southWest = L.latLng({{map[1].bounds.sw}}),
+    northEast = L.latLng({{map[1].bounds.ne}}),
+    bounds = L.latLngBounds(southWest, northEast);
+  var map = L.map("{{ map[0] }}").setView([{{map[1].view.center}}], {{map[1].view.zoom}}).setMaxBounds(bounds);
+
+  var maxZoom = {{map[1].max_zoom}}
+  var minZoom = {{map[1].min_zoom}}
+
+  L.tileLayer('{{map[1].layer_url}}', {
+        minZoom: minZoom,
+  			maxZoom: maxZoom
+  		}).addTo(map);
+</script>
+
+
+{% endfor %}
