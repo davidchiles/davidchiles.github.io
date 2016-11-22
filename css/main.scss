@@ -39,7 +39,37 @@ $on-laptop:        800px;
     }
 }
 
+/**
+ * Icons
+ */
+.icon {
 
+    > svg {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
+
+        path {
+            fill: $grey-color;
+        }
+    }
+}
+
+table{
+	margin-left:auto; 
+    margin-right:auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+th{
+    border:2px solid $grey-color-light	;
+}
+
+td{
+    border:1px solid $grey-color-light;
+}
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import

@@ -23,13 +23,12 @@
     {% endif %}
     
     {% for map in page.maps %}
-        <style type="text/css">
-            {% if map[1].height == "" or map[1].height == nil %}
-                #{{map[0]}} { height: 400px; }
-            {% else %}
-                #{{map[0]}} { height: {{map[1].height}}px; }
-            {% endif %}
-            
-        </style>
+    <style type="text/css">
+        {% if map[1].height == "" or map[1].height == nil %}
+        #{{map[0]}} { height: 400px; }
+        {% else %}
+        #{{map[0]}} { height: {{map[1].height}}px; }
+        {% endif %}
+    </style>
     {% endfor %}
 </head>
