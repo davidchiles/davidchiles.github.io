@@ -9,7 +9,7 @@ github_username:  davidchiles
 instagram_username: chilichiles
 
 # Build settings
-theme: minima
+#theme: minima
 highlighter: rouge
 markdown: kramdown
 
