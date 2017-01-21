@@ -19,7 +19,7 @@ ChatSecure uses [YapDatabase](https://github.com/yapstudios/YapDatabase) extensi
 
 #### First the setup:
 
-```swift
+{% highlight swift %}
 let database = YapDatabase(path: path)
 let handler = //Some object that conforms to YapTaskQueueHandler
 do {
@@ -30,7 +30,7 @@ do {
 } catch {
 	
 }
-```
+{% endhighlight %}
 
 The handler needs to implement one function:
 
